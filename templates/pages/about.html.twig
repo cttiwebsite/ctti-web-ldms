@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+ {{ include('pages/nav-links.html.twig') }}
+      <section class="about-upper-section" itemprop="mainContentofPage">
+			<div class="container">
+				<article class="who-we-are">
+					<h2 class="top-heading">who we are</h2>
+				<p style=" text-align: justify;">
+				{% for info in about %}
+				{{info.getHistory}}
+				{% else %}
+				<p style=" text-align: justify;"> Database connection issues</p>
+				{% endfor %}
+				</p>	
+				</article>
+				<div class="our-story">
+					<h2 class="top-heading">our story</h2>
+					<ul>
+						<li><i class="fas fa-chalkboard-teacher"></i> <a href="#">35+ certified lecturers</a></li>
+						<li><i class="fas fa-graduation-cap"></i> <a href="#">800+ students enrolled</a></li>
+						<li><i class="fas fa-book-open"></i> <a href="#">10+ programs offered</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="about-upper-section" itemprop="mainContentofPage">
+			<div class="container">
+				<article class="who-we-are">
+					<h2 class="top-heading">Mission Statement</h2>
+					<p style=" text-align: justify;">
+					{% for info in about %}
+					{{info.getMissionStatement}}
+					{% else %}
+					<p style=" text-align: justify;"> Database connection issues</p>
+					{% endfor %}
+					</p>
+				</article>
+				<div class="who-we-are">
+				<h2 class="top-heading">Vision</h2>
+				<p style="text-align:justify;">
+				{% for info in about %}
+				{{info.vision}}
+				{% else %}
+				<p style=" text-align: justify;"> Database connection issues</p>
+				{% endfor %}
+				</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="query-section">
+			<div class="container">
+				<p>For more info ask us a question @<a href="+260-977-370-130"><i class="fas fa-phone"></i> 
+				{% for info in about %}
+				{{info.getPhoneNumber}}
+				{% else %}
+				<p style=" text-align: justify;"> Database connection issues</p>
+				{% endfor %}
+				</a></p>
+			</div>
+		</section>
+		
+		<!-- End of Query Section -->
+			{{ include('pages/footer.html.twig') }}
+		{% endblock %}
+
+
+        

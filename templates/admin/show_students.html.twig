@@ -1,0 +1,56 @@
+{% extends 'registration/base.html.twig' %}
+{% block body %}
+{{ include('admin/navigation.html.twig') }}
+<div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Students</h6>
+                        </div>
+                        <div class="card-body">
+                        <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Firstname</th>
+                                            <th>Middlename</th>
+                                            <th>Lastname</th>
+                                            <th>Nrc</th>
+                                            <th>Email</th>
+                                            <th>Program</th>
+                                            <th>Secion</th>
+                                            <th>Sponsor</th>
+                                            <th>Gender</th>
+                                            <th>Disability</th>
+                                             <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                      {% for student in students %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{student.getStudentId}}</td>
+                                            <td>{{student.getStudentFirstName}}</td>
+                                            <td>{{student.getStudentMiddleName}}</td>
+                                            <td>{{student.getStudentLastName}}</td>
+                                            <td>{{student.getStudentNrc}}</td>
+                                            <td>{{student.getStudentEmail}}</td>
+                                            <td>{{student.getStudentProgramOfStudy}}</td>
+                                            <td>{{student.getStudentSection}}</td>
+                                            <td>{{student.getStudentSponsor}}</td>
+                                            <td>{{student.getStudentGender}}</td>
+                                            <td>{{student.getStudentDisability}}</td>
+                                            <td width="100">
+                                            
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                      {% else %}
+                                       <h6>{{message}}</h6>
+                                     {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+ {% include'admin/footer.html.twig' %}
+{% endblock %}

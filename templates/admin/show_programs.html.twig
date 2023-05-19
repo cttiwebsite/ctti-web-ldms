@@ -1,0 +1,46 @@
+{% extends 'registration/base.html.twig' %}
+{% block body %}
+{{ include('admin/navigation.html.twig') }}
+<div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Programs</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Code</th>
+                                            <th>Name</th>
+                                            <th>Duration</th>
+                                            <th>Certification</th>
+                                            <th>Level</th>
+                                             <th>Section</th>
+                                             <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                      {% for program in programs %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{program.getProgramCode}}</td>
+                                              <td>{{program.getProgramName}}</td>
+                                                <td>{{program.getProgramDuration}}</td>
+                                                  <td>{{program.getProgramCertification}}</td>
+                                                    <td>{{program.getProgramType}}</td>
+                                                    <td>{{program.getSection}}</td> 
+                                            <td width="100">
+                                            
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                      {% else %}
+
+                                     {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+ {% include'admin/footer.html.twig' %}
+{% endblock %}

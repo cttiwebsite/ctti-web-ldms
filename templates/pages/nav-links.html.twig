@@ -1,0 +1,69 @@
+<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<ca href="chipatatrades@yahoo.com" itemprop="email"><i class="fas fa-envelope"></i>chipatatrades@yahoo.com</ca>
+						</div>
+						<div class="top-header-block">
+							<a href="tel:+260-977-370-130" itemprop="telephone"><i class="fas fa-phone"></i> +260-977-370-130</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
+								<li><a href=""><i class="fab fa-viber"></i></a></li>
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							<a href="{{ path('app_login') }}">Login /</a>
+							<a href="{{ path('app_register') }}">Register</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="{{ asset('images/logo3.png') }}" style="width: 70px; height: 70px;"alt="Logo Image">
+						<!-- <h1>Education</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{{ path('home') }}">Home</a></li>
+								<li class="menu-parent">Courses
+									<ul class="sub-menu">
+										<li><a href="{{ path('courses') }}">Business & Agriculture</a></li>
+										<li><a href="{{ path('courses') }}">Engineering</a></li>
+									<!--<	<li class="menu-parent">Child
+											<ul class="sub-menu">
+												<!--<li><a href="">Grand-child</a></li>
+												<li><a href="">Grand-child</a></li>
+											</ul> -->
+										</li>
+									</ul>
+								</li>
+								<li><a href="{{ path('events') }}">News</a></li>
+								<li><a href="{{ path('about') }}">About</a></li>
+								<li><a href="{{ path('gallery') }}">Gallery</a></li>
+								<li><a href="{{ path('contact') }}">Contact</a></li>
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>

@@ -1,0 +1,194 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+ <div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+		<header class="site-header">
+			<div class="top-header">
+				<div class="container">
+					<div class="top-header-left">
+						<div class="top-header-block">
+							<ca href="chipatatrades@yahoo.com" itemprop="email"><i class="fas fa-envelope"></i>chipatatrades@yahoo.com</ca>
+						</div>
+						<div class="top-header-block">
+							<a href="tel:+260-977-370-130" itemprop="telephone"><i class="fas fa-phone"></i> +260-977-370-130</a>
+						</div>
+					</div>
+					<div class="top-header-right">
+						<div class="social-block">
+							<ul class="social-list">
+								<li><a href=""><i class="fab fa-viber"></i></a></li>
+								<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+								<li><a href=""><i class="fab fa-facebook-messenger"></i></a></li>
+								<li><a href=""><i class="fab fa-twitter"></i></a></li>
+								<li><a href=""><i class="fab fa-skype"></i></a></li>
+							</ul>
+						</div>
+						<div class="login-block">
+							<a href="{{ path('app_login') }}">Login /</a>
+							<a href="{{ path('app_register') }}">Register</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Top header Close -->
+			<div class="main-header">
+				<div class="container">
+					<div class="logo-wrap" itemprop="logo">
+						<img src="{{ asset('images/logo3.png') }}" style="width: 90px; height: 90px;"alt="Logo Image">
+						<!-- <h1>Education</h1> -->
+					</div>
+					<div class="nav-wrap">
+						<nav class="nav-desktop">
+							<ul class="menu-list">
+								<li><a href="{{ path('home') }}">Home</a></li>
+								<li class="menu-parent">Courses
+									<ul class="sub-menu">
+										<li><a href="{{ path('courses') }}">Business & Agriculture</a></li>
+										<li><a href="{{ path('courses') }}">Engineering</a></li>
+									<!--<	<li class="menu-parent">Child
+											<ul class="sub-menu">
+												<!--<li><a href="">Grand-child</a></li>
+												<li><a href="">Grand-child</a></li>
+											</ul> -->
+										</li>
+									</ul>
+								</li>
+								<li><a href="{{ path('events') }}">News</a></li>
+								<li><a href="{{ path('about') }}">About</a></li>
+								<li><a href="{{ path('gallery') }}">Gallery</a></li>
+								<li><a href="{{ path('contact') }}">Contact</a></li>
+							</ul>
+						</nav>
+						<div id="bar">
+							<i class="fas fa-bars"></i>
+						</div>
+						<div id="close">
+							<i class="fas fa-times"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Header Close -->
+		<div class="banner">
+			<div class="owl-four owl-carousel" itemprop="image">
+				<img src="{{ asset('images/back.jpg') }}" alt="Image of Bannner">
+				<img src="{{ asset('images/front.jpg') }}" alt="Image of Bannner">
+				<img src="{{ asset('images/background.jpeg') }}" alt="Image of Bannner">
+			</div>
+			<div class="container" itemprop="description">
+				<h1>welcome to Chipata Trades Institute</h1>
+				<h3>With our diverse skills training you can now find the skills for you...</h3>
+			</div>
+			 <div id="owl-four-nav" class="owl-nav"></div>
+		</div>
+   <div class="page-heading">
+			<div class="container">
+				<h2>popular courses</h2>
+			</div>
+		</div>
+		<!-- Popular courses End -->
+		<div class="learn-courses">
+			<div class="container-fluid">
+				<div class="courses">
+					<div class="owl-one owl-carousel">
+                    {% for program in programs %}
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg') }}" alt="courses picture"></div>
+								<a href="course-listing.php" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="box-body" itemprop="description">
+								<p> {{program.getDescription}}</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> {{program.getProgramDuration}}</p>
+								</section>
+							</div>
+						</div>
+						{% else %}
+
+					{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Learn courses End -->
+		
+		<!-- Start of Events section -->
+
+		<section class="page-heading">
+			<div class="container">
+				<h2>Upcomming events</h2>
+			</div>
+		</section>
+		<section class="events-section" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+			<div class="container">
+			{% for event in events %}
+				<div class="event-wrap">
+					<div class="img-wrap" itemprop="image">
+						<img src="{{ asset('images/back.jpg') }}" alt="event images">
+					</div>
+					<div class="details">
+						<a href=""><h3 itemprop="name"> </h3>{{event.getEventName}}</a>
+						<p itemprop="description"> 
+						
+						
+						</p>
+
+						<h5 itemprop="startDate"><i class="far fa-clock"></i>       </h5>
+						<h5 itemprop="location"><i class="fas fa-map-marker-alt"></i> {{event.getEventLocation}}</h5>
+					</div>
+				</div>
+				{% else %}
+
+			{% endfor %}
+			</div>
+		</section>
+		<!-- End of Events section -->
+		<section class="page-heading">
+			<div class="container">
+				<h2>latest news</h2>
+			</div>
+		</section>
+		<section class="latest-news">
+			<div class="container-fluid" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+				<div class="owl-two owl-carousel">
+				{% for news in news %}
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="{{ asset('images/front.jpg') }}" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>{{news.getHeading}}</h1></a>
+							<h2 itemprop="startDate">{{news.getDate}}</h2>
+
+							<p>{{news.getContent}}</p>
+						</div>
+					</div>
+					{% else %}
+
+			    {% endfor %}
+				</div>
+			</div>
+		</section>
+		<!-- Latest News CLosed -->
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries? Ask us a question at
+				  <a href="tel:+260-977-370-130">
+					<i class="fas fa-phone"></i> 
+					   {% for about  in about %}
+						{{about.getPhoneNumber}}
+					   {% endfor %}
+				  </a>
+				</p>
+			</div>
+		</section>
+		
+		{{ include('pages/footer.html.twig') }}
+
+{% endblock %}
+
+           
+
+
+	

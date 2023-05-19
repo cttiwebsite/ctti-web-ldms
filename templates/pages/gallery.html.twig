@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+{{ include('pages/nav-links.html.twig') }}	
+		<section class="gallery-section2">
+			<div class="container">
+				<div id="filters" class="button-group">
+					<button class="button" data-filter="*">all</button>
+  					<button class="button" data-filter=".business">business</button>
+  					<button class="button" data-filter=".design">design</button>
+  					<button class="button" data-filter=".development">development</button>
+  					<button class="button" data-filter=".seo">seo</button>
+  					<button class="button" data-filter=".marketing">marketing</button>
+				</div>
+			</div>
+				<section class="gallery-images-section gallery2" id="cGrid">
+					<div class="gallery-img-wrap grid-item business" data-category="business">
+						<a href="images/gallery-img1.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/agric.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item business" data-category="business">
+						<a href="images/gallery-img2.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/dct1.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item design" data-category="design">
+						<a href="images/gallery-img3.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/lib.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item design" data-category="design">
+						<a href="images/gallery-img4.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/bricklaying.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item development" data-category="development">
+						<a href="images/gallery-img5.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/fbs2.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item design" data-category="design">
+						<a href="images/gallery-img6.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/fbs1.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item seo" data-category="seo">
+						<a href="images/gallery-img7.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/fbs.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item marketing" data-category="marketing">
+						<a href="images/gallery-img8.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/engineering.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item seo" data-category="seo">
+						<a href="images/gallery-img9.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/dct1.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item seo" data-category="seo">
+						<a href="images/gallery-img10.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/ict.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item seo" data-category="seo">
+						<a href="images/gallery-img11.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/students2.jpg" alt="gallery-images">
+						</a>
+					</div>
+					<div class="gallery-img-wrap grid-item seo" data-category="seo">
+						<a href="images/gallery-img12.jpg" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+							<img src="assets/images/students1.jpg" alt="gallery-images">
+						</a>
+					</div>
+				</section>
+				<!-- End of gallery Images -->				
+		</section>
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries? Ask us a question at<a href="tel:+260-977-370-130"><i class="fas fa-phone"></i> +260-977-370-130</a></p>
+			</div>
+		</section>
+		<!-- End of Query Section -->
+		{{ include('pages/footer.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'registration/base.html.twig' %}
+{% block body %}
+{% include'admin/navigation.html.twig' %}
+ <div class="container">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Users</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>EMAIL</th>
+                                            <th>FIRST NAME</th>
+                                            <th>LAST NAME</th>
+                                            
+                                            <th>ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                      {% for user in users %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{user.getId}}</td>
+                                            <td>{{user.getEmail}}</td>
+                                            <td>{{user.getFirstName}}</td>
+                                            <td>{{user.getLastName}}</td>
+                                            <td width="100">
+                                            <a title="Delete" href="/admin/delete_user/{{user.getId}}" class="btn btn-danger"></a>
+                                            <a title="Edit" href="/admin/update_user/{{user.getId}}" class="btn btn-success"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                      {% else %}
+
+                                     {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+ {% include'admin/footer.html.twig' %}
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Chipata Trades|Admin{% endblock %}</title>
+        <link rel="icon" href="">
+        {% block stylesheets %}
+        <link href="/assets/css/bootstrap.css" rel="stylesheet" media="screen">
+		<link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+		<link href="/assets/css/docs.css" rel="stylesheet" media="screen">
+		<link href="/assets/css/diapo.css" rel="stylesheet" media="screen">
+		<link href="/assets/css/font-awesome.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="/assets/css/DT_bootstrap.css" />
+		<link rel="stylesheet" type="text/css" media="print" href="/assets/css/print.css" />
+	    <link href="assets/css/datepicker.css" rel="stylesheet" type="text/css" />
+	   {% endblock %}
+    {% block javascripts %}
+       <script src="/assets/js/jquery-1.7.2.min.js"></script>
+       <script src="/assets/js/bootstrap.js"></script>
+	   <script src="/assets/js/jquery.hoverdir.js"></script>
+       <script type="text/javascript" charset="utf-8" language="javascript" src="assets/js/jquery.dataTables.js"></script>
+       <script type="text/javascript" charset="utf-8" language="javascript" src="assets/js/DT_bootstrap.js"></script>
+       <script type='text/javascript' src='assets/scripts/jquery.easing.1.3.js'></script> 
+       <script type='text/javascript' src='assets/scripts/jquery.hoverIntent.minified.js'></script> 
+       <script type='text/javascript' src='assets/scripts/diapo.js'></script> 
+       <script type="text/javascript" src="assets/js/datepicker.js"></script>
+    {% endblock %}
+    </head>
+    <body>
+    {% block body %}{% endblock %}
+    </body>
+</html>
