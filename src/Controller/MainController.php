@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\News;
 use App\Entity\User;
 use App\Entity\About;
@@ -13,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
 class MainController extends AbstractController
 {
     #[Route('/admin', name: 'dashboard')]

@@ -38,7 +38,7 @@ mounts:
     
 
 relationships:
-     mysql_database: "database:postgresql"
+     database: "database:postgresql"
     
 hooks:
     build: |
