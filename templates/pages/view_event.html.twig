@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ include('pages/nav-links.html.twig') }}
+<section class="events-section" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+			<div class="container">
+				<div class="event-wrap">
+					<div class="img-wrap" itemprop="image">
+						<img src="{{ asset('images/back.jpg') }}" alt="event images">
+					</div>
+					<div class="details">
+						<a href="/event/{{event.getEventName}}"><h5 itemprop="name"> </h5>{{event.getEventName}}</a>
+						<p itemprop="description"> 
+						{{event.getEventHost}}
+						</p>
+						<h5 itemprop="startDate"><i class="far fa-clock"></i>{{event.getDate}}</h5>
+						<h5 itemprop="location"><i class="fas fa-map-marker-alt"></i>{{event.getEventLocation}}</h5>
+					</div>
+				</div>
+			</div>
+		</section>
+{{ include('pages/footer.html.twig') }}
+{% endblock %}

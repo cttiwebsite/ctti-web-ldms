@@ -39,6 +39,16 @@ class NewsRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByHeading($value): ?News
+    {
+        return $this->createQueryBuilder('s')
+             ->andWhere('s.heading = :val')
+             ->setParameter('val', $value)
+             ->getQuery()
+             ->getOneOrNullResult()
+         ;
+     }
+
 //    /**
 //     * @return News[] Returns an array of News objects
 //     */

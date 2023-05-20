@@ -39,6 +39,16 @@ class EventRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByName($value): ?Event
+    {
+        return $this->createQueryBuilder('s')
+             ->andWhere('s.event_name = :val')
+             ->setParameter('val', $value)
+             ->getQuery()
+             ->getOneOrNullResult()
+         ;
+     }
+
 //    /**
 //     * @return Event[] Returns an array of Event objects
 //     */

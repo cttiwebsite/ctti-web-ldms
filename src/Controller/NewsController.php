@@ -19,6 +19,19 @@ class NewsController extends AbstractController
         return $this->render('pages/news.html.twig',['news' => $news, 'sections'=>$sections]);
     }
 
+    #[Route('/news/{slug}', name: 'view_news_item')]
+    public function ViewNewsItem(EntityManagerInterface $entityManager, string $slug): Response
+    {
+        $news = $entityManager->getRepository(News::class)->findByHeading($slug);
+        $sections = $entityManager->getRepository(Section::class)->findAll();
+        if (!$news) 
+        {
+            $this->addFlash('error', 'No News Found');
+            return $this->render('pages/news.html.twig', ['news' => $news,]);
+        }
+        return $this->render('pages/view_news.html.twig',['news' => $news, 'sections'=>$sections]);
+    }
+
     #[Route('/admin/add_news', name: 'create_news')]
     public function createNews(EntityManagerInterface $entityManager, Request $request): Response
     {

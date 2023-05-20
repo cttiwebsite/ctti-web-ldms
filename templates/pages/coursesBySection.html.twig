@@ -11,10 +11,11 @@
 			<div class="container-fluid">
 				<div class="courses">
 					<div class="owl-one owl-carousel">
-                    {% for program in programs %}
+                   {% for program in programs %}
+					     {%  if program.getSection == "Engineering" %}
 						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
-							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg') }}" alt="courses picture"></div>
-								<a href="/course/{{program.getId}}" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/engineering.jpg') }}" alt="engineering picture"></div>
+								<a href="/course/{{program.getProgramName}}" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
 							<div class="box-body" itemprop="description">
 								<p> {{program.getDescription}}</p>
 								<section itemprop="time">
@@ -22,10 +23,20 @@
 								</section>
 							</div>
 						</div>
-						{% else %}
-
+						{% endif %}
+						{% if program.getSection == "AgricultureBusiness" %}
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/buz.jpeg') }}" alt="engineering picture"></div>
+								<a href="" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="box-body" itemprop="description">
+								<p> {{program.getDescription}}</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> {{program.getProgramDuration}}</p>
+								</section>
+							</div>
+						</div>
+						{% endif %}
 					{% endfor %}
-
 					</div>
 				</div>
 			</div>

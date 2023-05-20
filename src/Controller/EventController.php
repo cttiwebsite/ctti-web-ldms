@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+use App\Entity\News;
 use App\Entity\Event;
 use App\Entity\Section;
 use App\Form\EventType;
@@ -17,6 +18,18 @@ class EventController extends AbstractController
         $events = $entityManager->getRepository(Event::class)->findAll();
         $sections = $entityManager->getRepository(Section::class)->findAll();
         return $this->render('pages/events.html.twig',['events' => $events,'sections'=>$sections]);
+    }
+
+    #[Route('/event/{slug}', name: 'view_event_item')]
+    public function ViewNewsItem(EntityManagerInterface $entityManager, string $slug): Response
+    {
+        $event = $entityManager->getRepository(Event::class)->findByName($slug);
+        $sections = $entityManager->getRepository(Section::class)->findAll();
+        if (!$event) 
+        {
+            $this->addFlash('error', 'No Events Found');
+        }
+        return $this->render('pages/view_event.html.twig',['event' => $event, 'sections'=>$sections]);
     }
 
     #[Route('/admin/add_event', name: 'create_event')]

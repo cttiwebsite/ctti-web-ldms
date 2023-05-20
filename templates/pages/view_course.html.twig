@@ -3,11 +3,7 @@
 <div class="page-heading">
 {{ include('pages/nav-links.html.twig') }}
 			<div class="container">
-            {% for program in program %}
 				<h2> {{program.getProgramName}}</h2>
-            {% else %}
-            
-			{% endfor %}
 			</div>
 		</div>
 		<!-- Popular courses End -->
@@ -15,10 +11,9 @@
 			<div class="container-fluid">
 				<div class="courses">
 					<div class="owl-one owl-carousel">
-                    {% for program in program %}
 						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
-							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg') }}" alt="courses picture"></div>
-								<a href="/course/{{program.getId}}" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg')}}" alt="courses picture"></div>
+								<a class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
 							<div class="box-body" itemprop="description">
 								<p> {{program.getDescription}}</p>
 								<section itemprop="time">
@@ -26,10 +21,6 @@
 								</section>
 							</div>
 						</div>
-						{% else %}
-
-					{% endfor %}
-
 					</div>
 				</div>
 			</div>

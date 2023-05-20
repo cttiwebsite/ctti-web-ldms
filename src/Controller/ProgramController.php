@@ -18,14 +18,14 @@ class ProgramController extends AbstractController
         return $this->render('pages/courses.html.twig',['programs' => $programs,'sections' => $sections,]);
     }
 
-    #[Route('/course/{id}', name: 'view_program')]
-    public function ViewProgram(EntityManagerInterface $entityManager, $id): Response
+    #[Route('/course/{slug}', name: 'view_program')]
+    public function ViewProgram(EntityManagerInterface $entityManager, string $slug): Response
     {
-        $program = $entityManager->getRepository(Program::class)->find($id);
+        $program = $entityManager->getRepository(Program::class)->findByProgramName($slug);
         $sections = $entityManager->getRepository(Section::class)->findAll();
         if (!$program) 
         {
-            throw $this->createNotFoundException('No programs found for  '.$id);
+            throw $this->createNotFoundException('No programs found for  '.$slug);
         }
 
         return $this->render('pages/view_course.html.twig', ['program' => $program,'sections'=>$sections]);

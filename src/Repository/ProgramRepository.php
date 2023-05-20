@@ -39,6 +39,16 @@ class ProgramRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByProgramName($value): ?Program
+    {
+        return $this->createQueryBuilder('s')
+             ->andWhere('s.program_name = :val')
+             ->setParameter('val', $value)
+             ->getQuery()
+             ->getOneOrNullResult()
+         ;
+     }
+
 //    /**
 //     * @return Program[] Returns an array of Program objects
 //     */

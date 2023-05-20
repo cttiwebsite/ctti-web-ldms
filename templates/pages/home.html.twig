@@ -1,33 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
- <div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
+<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
 {{ include('pages/nav-links.html.twig') }}
 		<!-- Header Close -->
 		<div class="banner">
 			<div class="owl-four owl-carousel" itemprop="image">
-				<img src="{{ asset('images/back.jpg') }}" alt="Image of Bannner">
-				<img src="{{ asset('images/front.jpg') }}" alt="Image of Bannner">
-				<img src="{{ asset('images/background.jpeg') }}" alt="Image of Bannner">
+				<img src="{{asset('images/back.jpg')}}" alt="Image of Bannner">
+				<img src="{{asset('images/front.jpg')}}" alt="Image of Bannner">
+				<img src="{{asset('images/home-background.jpg')}}" alt="Image of Bannner">
 			</div>
 			<div class="container" itemprop="description">
 				<h1>welcome to Chipata Trades Institute</h1>
 				<h3>With our diverse skills training you can now find the skills for you...</h3>
 			</div>
-			 <div id="owl-four-nav" class="owl-nav"></div>
+			 <div id="owl-four-nav" class="owl-nav"> </div>
 		    </div>
-        <div class="page-heading">
+		{% if programs %}
+        <section class="page-heading">
 			<div class="container">
-				<h2>popular courses</h2>
+				<h2>Popular Programs</h2>
 			</div>
-		</div>
-		<!-- Popular courses End -->
+		</section>
+		{% endif %}
+		<!-- Popular courses start-->
 		<div class="learn-courses">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="courses">
 					<div class="owl-one owl-carousel">
                     {% for program in programs %}
+					     {%  if program.getSection == "Engineering" %}
 						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
-							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg') }}" alt="courses picture"></div>
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/engineering.jpg') }}" alt="engineering picture"></div>
 								<a href="course-listing.php" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
 							<div class="box-body" itemprop="description">
 								<p> {{program.getDescription}}</p>
@@ -36,8 +39,19 @@
 								</section>
 							</div>
 						</div>
-						{% else %}
-
+						{% endif %}
+						{% if program.getSection == "AgricultureBusiness" %}
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/buz.jpeg') }}" alt="engineering picture"></div>
+								<a href="course-listing.php" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="box-body" itemprop="description">
+								<p> {{program.getDescription}}</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> {{program.getProgramDuration}}</p>
+								</section>
+							</div>
+						</div>
+						{% endif %}
 					{% endfor %}
 
 					</div>
@@ -45,13 +59,14 @@
 			</div>
 		</div>
 		<!-- Learn courses End -->
-		
 		<!-- Start of Events section -->
+		{% if events %}
         <section class="page-heading">
 			<div class="container">
-				<h2>Upcomming events</h2>
+				<h2>Upcomming Events</h2>
 			</div>
 		</section>
+		{% endif %}
 		<section class="events-section" itemprop="event" itemscope itemtype=" http://schema.org/Event">
 			<div class="container">
 			{% for event in events %}
@@ -60,7 +75,7 @@
 						<img src="{{ asset('images/back.jpg') }}" alt="event images">
 					</div>
 					<div class="details">
-						<a href=""><h5 itemprop="name"> </h5>{{event.getEventName}}</a>
+						<a href="/event/{{event.getEventName}}"><h5 itemprop="name"> </h5>{{event.getEventName}}</a>
 						<p itemprop="description"> 
 						{{event.getEventHost}}
 						</p>
@@ -69,18 +84,70 @@
 					</div>
 				</div>
 				{% else %}
-
 			{% endfor %}
 			</div>
 		</section>
-		<!-- End of Events section -->
-		<section class="page-heading">
+		<!-- About section -->
+		{% if about %}
+        <section class="page-heading">
 			<div class="container">
-				<h2>latest news</h2>
+				<h2>Who We Are</h2>
 			</div>
 		</section>
+		{% endif %}
+       <section class="about-upper-section" itemprop="mainContentofPage">
+			<div class="container">
+				<article class="who-we-are">
+					
+				<p style=" text-align: justify;">
+				{% for info in about %}
+				{{info.getHistory}}
+				{% else %}
+				{% endfor %}
+				</p>	
+				</article>
+				<div class="our-story">
+					<h2 class="top-heading">our story</h2>
+					<ul>
+						<li><i class="fas fa-chalkboard-teacher"></i> <a href="#">35+ certified lecturers</a></li>
+						<li><i class="fas fa-graduation-cap"></i> <a href="#">800+ students enrolled</a></li>
+						<li><i class="fas fa-book-open"></i> <a href="#">10+ programs offered</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="about-upper-section" itemprop="mainContentofPage">
+			<div class="container">
+				<article class="who-we-are">
+					<h2 class="top-heading">Mission Statement</h2>
+					<p style=" text-align: justify;">
+					{% for info in about %}
+					{{info.getMissionStatement}}
+					{% else %}
+					{% endfor %}
+					</p>
+				</article>
+				<div class="who-we-are">
+				<h2 class="top-heading">Vision</h2>
+				<p style="text-align:justify;">
+				{% for info in about %}
+				{{info.vision}}
+				{% else %}
+				{% endfor %}
+				</p>
+				</div>
+			</div>
+		</section>
+       <!-- End of about section -->
+		{% if news %}
+        <section class="page-heading">
+			<div class="container">
+				<h2>Latest News</h2>
+			</div>
+		</section>
+		{% endif %}
 		<section class="latest-news">
-			<div class="container-fluid" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+			<div class="container" itemprop="event" itemscope itemtype=" http://schema.org/Event">
 				<div class="owl-two owl-carousel">
 				{% for news in news %}
 					<div class="news-wrap" itemprop="event">
@@ -88,14 +155,12 @@
 							<img src="{{ asset('images/front.jpg') }}" alt="Latest News Images">
 						</div>
 						<div class="news-detail" itemprop="description">
-							<a href=""><h1>{{news.getHeading}}</h1></a>
+							<a href="/news/{{news.getHeading}}"><h1>{{news.getHeading}}</h1></a>
 							<h2 itemprop="startDate">{{news.getDate}}</h2>
-
 							<p>{{news.getContent}}</p>
 						</div>
 					</div>
 					{% else %}
-
 			    {% endfor %}
 				</div>
 			</div>
@@ -113,9 +178,7 @@
 				</p>
 			</div>
 		</section>
-		
 		{{ include('pages/footer.html.twig') }}
-
 {% endblock %}
 
            
