@@ -5,12 +5,14 @@ use App\Entity\User;
 use App\Entity\About;
 use App\Entity\Event;
 use App\Entity\Program;
+use App\Entity\Section;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 class MainController extends AbstractController
 {
     #[Route('/admin', name: 'dashboard')]
@@ -28,7 +30,9 @@ class MainController extends AbstractController
         $news = $entityManager->getRepository(News::class)->findAll();
         $events = $entityManager->getRepository(Event::class)->findAll();
         $about = $entityManager->getRepository(About::class)->findAll();
-        return $this->render('pages/home.html.twig', ['programs'=>$program,'news'=>$news,'events'=>$events,'about'=>$about]);
+        $sections = $entityManager->getRepository(Section::class)->findAll();
+        return $this->render('pages/home.html.twig',
+         ['programs'=>$program,'news'=>$news,'events'=>$events,'about'=>$about,'sections'=>$sections,]);
     }
 
 

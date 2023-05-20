@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ include('pages/nav-links.html.twig') }}
+<<section class="page-heading">
+			<div class="container">
+				<h2>latest news</h2>
+			</div>
+		</section>
+		<section class="latest-news">
+			<div class="container-fluid" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+				<div class="owl-two owl-carousel">
+				{% for news in news %}
+					<div class="news-wrap" itemprop="event">
+						<div class="news-img-wrap" itemprop="image">
+							<img src="{{ asset('images/front.jpg') }}" alt="Latest News Images">
+						</div>
+						<div class="news-detail" itemprop="description">
+							<a href=""><h1>{{news.getHeading}}</h1></a>
+							<h2 itemprop="startDate">{{news.getDate}}</h2>
+
+							<p>{{news.getContent}}</p>
+						</div>
+					</div>
+					{% else %}
+
+			    {% endfor %}
+				</div>
+			</div>
+		</section>
+		<!-- Latest News CLosed -->
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries? Ask us a question at<a href="tel:+260-977-370-130"><i class="fas fa-phone"></i> +260-977-370-130</a></p>
+			</div>
+		</section>
+		<!-- End of Query Section -->
+{{ include('pages/footer.html.twig') }}
+{% endblock %}

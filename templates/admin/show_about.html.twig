@@ -17,20 +17,32 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>CODE</th>
-                                            <th>NAME</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Fax</th>
+                                            <th>Telephone</th>
+                                            <th>Mission Statement</th>
+                                            <th>Vision</th>
+                                            <th>Motto</th>
+                                            <th>History</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                      {% for section in sections %}
+                                      {% for about in about %}
                                     <tbody>
                                         <tr>
-                                            <td>{{section.getId}}</td>
-                                            <td>{{section.getSectionCode}}</td>
-                                            <td>{{section.getSectionName}}</td>
+                                            <td>{{about.getId}}</td>
+                                            <td>{{about.getEmailAddress}}</td>
+                                            <td>{{about.getPhoneNumber}}</td>
+                                            <td>{{about.getFaxNumber}}</td>
+                                            <td>{{about.getTelephone}}</td>
+                                            <td>{{about.getMissionStatement}}</td>
+                                            <td>{{about.getVision}}</td>
+                                            <td>{{about.getMotto}}</td>
+                                            <td>{{about.getHistory}}</td>
                                             <td width="100">
-                                                <a title="Delete" href="/admin/delete_section/{{section.getId}}" class="btn btn-danger"></a>
-                                                <a title="Edit" href="/admin/update_section/{{section.getId}}" class="btn btn-success"></a>
+                                                <a title="Delete" href="/admin/delete_about/{{about.getId}}" class="btn btn-danger"></a>
+                                                <a title="Edit" href="/admin/update_about/{{about.getId}}" class="btn btn-success"></a>
                                             </td>
                                         </tr>
                                     </tbody>

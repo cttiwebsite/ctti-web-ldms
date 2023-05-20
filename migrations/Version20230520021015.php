@@ -29,7 +29,7 @@ final class Version20230520021015 extends AbstractMigration
         $this->addSql('CREATE SEQUENCE student_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE user_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE about (id INT NOT NULL, email_address VARCHAR(255) NOT NULL, phone_number VARCHAR(255) NOT NULL, fax_number VARCHAR(255) DEFAULT NULL, telephone VARCHAR(255) DEFAULT NULL, mission_statement VARCHAR(255) NOT NULL, vision VARCHAR(255) NOT NULL, motto VARCHAR(255) NOT NULL, history TEXT NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE TABLE event (id INT NOT NULL, event_name VARCHAR(255) NOT NULL, event_start DATE NOT NULL, event_end DATE NOT NULL, event_location VARCHAR(255) NOT NULL, event_host VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE event (id INT NOT NULL, event_name VARCHAR(255) NOT NULL, date VARCHAR(255) DEFAULT NULL, event_location VARCHAR(255) NOT NULL, event_host VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE news (id INT NOT NULL, heading VARCHAR(255) NOT NULL, content VARCHAR(255) NOT NULL, date VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE TABLE program (id INT NOT NULL, section_id INT DEFAULT NULL, program_code VARCHAR(255) NOT NULL, program_name VARCHAR(255) NOT NULL, program_duration VARCHAR(255) NOT NULL, program_certification VARCHAR(255) NOT NULL, program_type VARCHAR(255) NOT NULL, description TEXT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_92ED7784D823E37A ON program (section_id)');

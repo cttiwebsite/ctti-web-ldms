@@ -11,6 +11,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Id</th>
                                             <th>Code</th>
                                             <th>Name</th>
                                             <th>Duration</th>
@@ -23,15 +24,17 @@
                                       {% for program in programs %}
                                     <tbody>
                                         <tr>
-                                            <td>{{program.getProgramCode}}</td>
-                                              <td>{{program.getProgramName}}</td>
-                                                <td>{{program.getProgramDuration}}</td>
-                                                  <td>{{program.getProgramCertification}}</td>
-                                                    <td>{{program.getProgramType}}</td>
-                                                    <td>{{program.getSection}}</td> 
-                                            <td width="100">
-                                            
-                                            </td>
+                                          <td>{{program.getId}}</td>
+                                          <td>{{program.getProgramCode}}</td>
+                                          <td>{{program.getProgramName}}</td>
+                                          <td>{{program.getProgramDuration}}</td>
+                                          <td>{{program.getProgramCertification}}</td>
+                                          <td>{{program.getProgramType}}</td>
+                                          <td>{{program.getSection}}</td> 
+                                          <td width="100">
+                                            <a title="Delete" href="/admin/delete_program/{{program.getId}}" class="btn btn-danger"></a>
+                                            <a title="Edit" href="/admin/update_program/{{program.getId}}" class="btn btn-success"></a>
+                                          </td>
                                         </tr>
                                     </tbody>
                                       {% else %}

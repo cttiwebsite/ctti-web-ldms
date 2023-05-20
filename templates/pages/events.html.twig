@@ -1,46 +1,35 @@
 {% extends 'base.html.twig' %}
- {% block body %}
+{% block body %}
 {{ include('pages/nav-links.html.twig') }}
-<section class="page-heading">
+<!-- Start of Events section -->
+		<section class="page-heading">
 			<div class="container">
-				<h2>latest news</h2>
+				<h2>Upcomming events</h2>
 			</div>
 		</section>
-		<section class="latest-news">
-			<div class="container-fluid" itemprop="event" itemscope itemtype=" http://schema.org/Event">
-				<div class="owl-two owl-carousel">
-					<div class="news-wrap" itemprop="event">
-						<div class="news-img-wrap" itemprop="image">
-							<img src="{{ asset('images/front.jpg')}}" alt="Latest News Images">
-						</div>
-						<div class="news-detail" itemprop="description">
-							<a href=""><h1>April 2023 EXAMMINATION</h1></a>
-							<h2 itemprop="startDate">By Admin | 07 Apr. 2023</h2>
-
-							<p> TEVETA Examinations will begin on 10th April.</p>
-						</div>
+		<section class="events-section" itemprop="event" itemscope itemtype=" http://schema.org/Event">
+			<div class="container">
+			{% for event in events %}
+				<div class="event-wrap">
+					<div class="img-wrap" itemprop="image">
+						<img src="{{ asset('images/back.jpg') }}" alt="event images">
 					</div>
+					<div class="details">
+						<a href=""><h3 itemprop="name"> </h3>{{event.getEventName}}</a>
+						<p itemprop="description"> 
+						
+						
+						</p>
 
-					<div class="news-wrap" itemprop="event">
-						<div class="news-img-wrap" itemprop="image">
-							<img src="{{ asset('images/front.jpg')}}" alt="Latest News Images">
-						</div>
-						<div class="news-detail" itemprop="description">
-							<a href=""><h1></h1></a>
-							<h2 itemprop="startDate">By Admin | 07 Apr. 2023</h2>
-
-							<p>    </p>
-						</div>
+						<h5 itemprop="startDate"><i class="far fa-clock"></i>       </h5>
+						<h5 itemprop="location"><i class="fas fa-map-marker-alt"></i> {{event.getEventLocation}}</h5>
 					</div>
 				</div>
+				{% else %}
+
+			{% endfor %}
 			</div>
 		</section>
-		<!-- Latest News CLosed -->
-		<section class="query-section">
-			<div class="container">
-				<p>Any Queries? Ask us a question at<a href="tel:+260-977-370-130"><i class="fas fa-phone"></i> +260-977-370-130</a></p>
-			</div>
-		</section>
-		<!-- End of Query Section -->
-		{{ include('pages/footer.html.twig') }}
-		{% endblock %}
+		<!-- End of Events section -->
+{{ include('pages/footer.html.twig') }}
+{% endblock %}

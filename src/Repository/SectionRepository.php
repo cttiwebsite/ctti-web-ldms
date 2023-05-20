@@ -39,6 +39,16 @@ class SectionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findBySection($value): ?Section
+    {
+        return $this->createQueryBuilder('s')
+             ->andWhere('s.section_name = :val')
+             ->setParameter('val', $value)
+             ->getQuery()
+             ->getOneOrNullResult()
+         ;
+     }
+
 //    /**
 //     * @return Section[] Returns an array of Section objects
 //     */

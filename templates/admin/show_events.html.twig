@@ -1,0 +1,50 @@
+{% extends 'registration/base.html.twig' %}
+{% block body %}
+{{ include('admin/navigation.html.twig') }}
+<div class="container">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Events</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Date</th>
+                                            <th>Location</th>
+                                            <th>Host</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                      {% for item in events %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{item.getId}}</td>
+                                            <td>{{item.getEventName}}</td>
+                                            <td>{{item.date}}</td>
+                                            <td>{{item.getEventLocation}}</td>
+                                            <td>{{item.getEventHost}}</td>
+                                            <td width="100">
+                                            <a title="Delete" href="/admin/delete_events/{{item.getId}}" class="btn btn-danger"></a>
+                                            <a title="Edit" href="/admin/update_event/{{item.getId}}" class="btn btn-success"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                      {% else %}
+
+                                     {% endfor %}
+                                </table>
+                           {% for message in app.flashes('error') %}
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+ {% include'admin/footer.html.twig' %}
+{% endblock %}

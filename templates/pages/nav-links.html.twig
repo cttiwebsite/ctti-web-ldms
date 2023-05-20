@@ -1,10 +1,9 @@
-<div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
-		<header class="site-header">
+<header class="site-header">
 			<div class="top-header">
 				<div class="container">
 					<div class="top-header-left">
 						<div class="top-header-block">
-							<ca href="chipatatrades@yahoo.com" itemprop="email"><i class="fas fa-envelope"></i>chipatatrades@yahoo.com</ca>
+							<a href="chipatatrades@yahoo.com" itemprop="email"><i class="fas fa-envelope"></i>chipatatrades@yahoo.com</a>
 						</div>
 						<div class="top-header-block">
 							<a href="tel:+260-977-370-130" itemprop="telephone"><i class="fas fa-phone"></i> +260-977-370-130</a>
@@ -32,7 +31,7 @@
 			<div class="main-header">
 				<div class="container">
 					<div class="logo-wrap" itemprop="logo">
-						<img src="{{ asset('images/logo3.png') }}" style="width: 70px; height: 70px;"alt="Logo Image">
+						<img src="{{ asset('images/logo3.png') }}" style="width: 90px; height: 90px;"alt="Logo Image">
 						<!-- <h1>Education</h1> -->
 					</div>
 					<div class="nav-wrap">
@@ -41,8 +40,12 @@
 								<li><a href="{{ path('home') }}">Home</a></li>
 								<li class="menu-parent">Courses
 									<ul class="sub-menu">
-										<li><a href="{{ path('courses') }}">Business & Agriculture</a></li>
-										<li><a href="{{ path('courses') }}">Engineering</a></li>
+									{% for section in sections %}
+										<li><a href="/programs/{{section.getSectionName}}">{{section.getSectionName}}</a></li>
+                                        {% else %}
+
+					                 {% endfor %}
+										<li><a href="{{ path('courses') }}">All</a></li>
 									<!--<	<li class="menu-parent">Child
 											<ul class="sub-menu">
 												<!--<li><a href="">Grand-child</a></li>
@@ -51,10 +54,11 @@
 										</li>
 									</ul>
 								</li>
-								<li><a href="{{ path('events') }}">News</a></li>
+								<li><a href="{{ path('news') }}">News</a></li>
+								<li><a href="{{ path('events') }}">Events</a></li>
 								<li><a href="{{ path('about') }}">About</a></li>
-								<li><a href="{{ path('gallery') }}">Gallery</a></li>
 								<li><a href="{{ path('contact') }}">Contact</a></li>
+								<li><a href="{{ path('apply') }}">Apply</a></li>
 							</ul>
 						</nav>
 						<div id="bar">

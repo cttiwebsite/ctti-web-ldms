@@ -2,13 +2,23 @@
 namespace App\Controller;
 use App\Entity\News;
 use App\Form\NewsType;
+use App\Entity\Section;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 class NewsController extends AbstractController
 {
+    #[Route('/news', name: 'news')]
+    public function events(EntityManagerInterface $entityManager): Response
+    {
+        $news = $entityManager->getRepository(News::class)->findAll();
+        $sections = $entityManager->getRepository(Section::class)->findAll();
+        return $this->render('pages/news.html.twig',['news' => $news, 'sections'=>$sections]);
+    }
+
     #[Route('/admin/add_news', name: 'create_news')]
     public function createNews(EntityManagerInterface $entityManager, Request $request): Response
     {
@@ -35,7 +45,7 @@ class NewsController extends AbstractController
             $entityManager->persist($news);
             $entityManager->flush();
             $this->addFlash('success', 'News Updated');
-            return $this->redirect($this->generateUrl(route:'news_show'));
+            return $this->redirect($this->generateUrl(route:'show_news'));
         }
         return $this->render('admin/update_news.html.twig', ['form'=>$form->createView(),]);
     }

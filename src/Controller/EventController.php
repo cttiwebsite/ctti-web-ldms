@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Controller;
-
-use App\Entity\News;
 use App\Entity\Event;
+use App\Entity\Section;
+use App\Form\EventType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,9 +12,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class EventController extends AbstractController
 { 
      #[Route('/events', name: 'events')]
-    public function events(): Response
+    public function events(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('pages/events.html.twig');
+        $events = $entityManager->getRepository(Event::class)->findAll();
+        $sections = $entityManager->getRepository(Section::class)->findAll();
+        return $this->render('pages/events.html.twig',['events' => $events,'sections'=>$sections]);
     }
 
     #[Route('/admin/add_event', name: 'create_event')]
@@ -26,11 +27,11 @@ class EventController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted())
         {
-            $this->addFlash('success', 'News Created');
+            $this->addFlash('success', 'Event Created');
             $entityManager->persist($event);
             $entityManager->flush();
         }
-        return $this->render('admin/create_event.html.twig', ['eventForm'=>$form->createView()]);
+        return $this->render('admin/create_event.html.twig', ['form'=>$form->createView()]);
     }
 
     #[Route('/admin/update_event/{id}', name: 'update_event')]
@@ -46,7 +47,7 @@ class EventController extends AbstractController
             $this->addFlash('success', 'News Updated');
             return $this->redirect($this->generateUrl(route:'show_events'));
         }
-        return $this->render('admin/update_event.html.twig', ['eventForm'=>$form->createView(),]);
+        return $this->render('admin/update_event.html.twig', ['form'=>$form->createView(),]);
     }
 
     #[Route('/admin/events', name: 'show_events')]
@@ -60,7 +61,7 @@ class EventController extends AbstractController
             return $this->render('admin/show_events.html.twig', ['events' => $events,]);
         }
 
-        return $this->render('admin/show_events.html.twig', ['news' => $events,]);
+        return $this->render('admin/show_events.html.twig', ['events' => $events,]);
     }
 
     #[Route('/admin/delete_events/{id}', name: 'delete_event')]

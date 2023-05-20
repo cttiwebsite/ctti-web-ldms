@@ -1,25 +1,22 @@
 <?php
 namespace App\Controller;
 use App\Entity\About;
+use App\Entity\Section;
 use App\Form\AboutType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 class AboutController extends AbstractController
 {
     #[Route('/about', name: 'about')]
     public function about (EntityManagerInterface $entityManager): Response
     {
+        $sections = $entityManager->getRepository(Section::class)->findAll();
         $info = $entityManager->getRepository(About::class)->findAll();
-        return $this->render('pages/about.html.twig', ['about'=>$info]);
-    }
-
-    #[Route('/contact', name: 'contact')]
-    public function contact(): Response
-    {
-        return $this->render('pages/contact.html.twig');
+        return $this->render('pages/about.html.twig', ['about'=>$info,'sections'=>$sections]);
     }
     
     #[Route('/admin/create_about', name: 'create_about')]

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ include('pages/nav-links.html.twig') }}
+<div class="page-heading">
+			<div class="container">
+				<h2>{{sections}} PROGRAMS OFFERED</h2>
+			</div>
+		</div>
+		<!-- Popular courses End -->
+		<div class="learn-courses">
+			<div class="container-fluid">
+				<div class="courses">
+					<div class="owl-one owl-carousel">
+                    {% for program in programs %}
+						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/course-pic.jpg') }}" alt="courses picture"></div>
+								<a href="/course/{{program.getId}}" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+							<div class="box-body" itemprop="description">
+								<p> {{program.getDescription}}</p>
+								<section itemprop="time">
+									<p><span>Duration:</span> {{program.getProgramDuration}}</p>
+								</section>
+							</div>
+						</div>
+						{% else %}
+
+					{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<section class="query-section">
+			<div class="container">
+				<p>Any Queries? Ask us a question at<a href="tel:+260-977-370-130"><i class="fas fa-phone"></i> +260-977-370-130</a></p>
+			</div>
+		</section>
+{{ include('pages/footer.html.twig') }}
+{% endblock %}
