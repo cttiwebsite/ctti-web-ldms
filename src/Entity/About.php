@@ -7,7 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AboutRepository::class)]
 class About
 {
-    #[ORM\Column(length:255)]
+    #[ORM\Id]
+    #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
