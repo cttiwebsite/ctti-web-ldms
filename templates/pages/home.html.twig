@@ -5,9 +5,9 @@
 		<!-- Header Close -->
 		<div class="banner">
 			<div class="owl-four owl-carousel" itemprop="image">
-				<img src="{{asset('images/back.jpg')}}" alt="Image of Bannner">
-				<img src="{{asset('images/front.jpg')}}" alt="Image of Bannner">
-				<img src="{{asset('images/home-background.jpg')}}" alt="Image of Bannner">
+				<img src="{{asset('images/background2.png')}}" alt="Image of Bannner">
+				<img src="{{asset('images/background1.jpg')}}" alt="Image of Bannner">
+				<img src="{{asset('images/hostel-pic5.png')}}" alt="Image of Bannner">
 			</div>
 			<div class="container" itemprop="description">
 				<h1>welcome to Chipata Trades Institute</h1>
@@ -31,7 +31,7 @@
 					     {%  if program.getSection == "Engineering" %}
 						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
 							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/engineering.jpg') }}" alt="engineering picture"></div>
-								<a href="course-listing.php" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+								<a href="" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
 							<div class="box-body" itemprop="description">
 								<p> {{program.getDescription}}</p>
 								<section itemprop="time">
@@ -43,7 +43,7 @@
 						{% if program.getSection == "AgricultureBusiness" %}
 						<div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
 							<div class="img-wrap" itemprop="image"><img src="{{ asset('images/buz.jpeg') }}" alt="engineering picture"></div>
-								<a href="course-listing.php" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
+								<a href="" class="learn-desining-banner" itemprop="name">{{program.getProgramName}} >>></a>
 							<div class="box-body" itemprop="description">
 								<p> {{program.getDescription}}</p>
 								<section itemprop="time">
@@ -72,7 +72,7 @@
 			{% for event in events %}
 				<div class="event-wrap">
 					<div class="img-wrap" itemprop="image">
-						<img src="{{ asset('images/back.jpg') }}" alt="event images">
+						<img src="{{ asset('images/hostel-pic1.png') }}" alt="event images">
 					</div>
 					<div class="details">
 						<a href="/event/{{event.getEventName}}"><h5 itemprop="name"> </h5>{{event.getEventName}}</a>
@@ -152,7 +152,7 @@
 				{% for news in news %}
 					<div class="news-wrap" itemprop="event">
 						<div class="news-img-wrap" itemprop="image">
-							<img src="{{ asset('images/front.jpg') }}" alt="Latest News Images">
+							<img src="{{ asset('images/hostel-pic3.png') }}" alt="Latest News Images">
 						</div>
 						<div class="news-detail" itemprop="description">
 							<a href="/news/{{news.getHeading}}"><h1>{{news.getHeading}}</h1></a>
