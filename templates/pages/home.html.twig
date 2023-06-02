@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div id="page" class="site" itemscope itemtype="http://schema.org/LocalBusiness">
-{{ include('pages/nav-links.html.twig') }}
+{{include('pages/nav-links.html.twig')}}
 		<!-- Header Close -->
 		<div class="banner">
 			<div class="owl-four owl-carousel" itemprop="image">
@@ -13,7 +13,8 @@
 				
 			</div>
 			 <div id="owl-four-nav" class="owl-nav"> </div>
-		    </div>
+		</div>
+
 		{% if programs %}
         <section class="page-heading">
 			<div class="container">
@@ -177,7 +178,7 @@
 				</p>
 			</div>
 		</section>
-		{{ include('pages/footer.html.twig') }}
+{{ include('pages/footer.html.twig') }}
 {% endblock %}
 
            
